@@ -16,7 +16,16 @@ function Hyunseo() {
   }, [todos]);
 
   const addTodo = () => {
-    if (input === "") return;
+    const noSpace = false;
+    
+    for (let i = 0 ; i < input.length ; i++)
+    {
+      if (input[i] !== ' ')
+      {
+        noSpace = true;
+        break;
+      }
+    }
     setTodos([...todos, input]);
     setInput("");
   };
