@@ -15,20 +15,25 @@ function Hyunseo() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  const addTodo = () => {
-    const noSpace = false;
-    
-    for (let i = 0 ; i < input.length ; i++)
-    {
-      if (input[i] !== ' ')
-      {
-        noSpace = true;
-        break;
-      }
+const addTodo = () => {
+  let noSpace = false;
+
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] !== " ") {
+      noSpace = true;
+      break;
     }
-    setTodos([...todos, input]);
-    setInput("");
-  };
+  }
+
+  if (!noSpace) {
+    alert("공백만 입력할 수 없습니다.");
+    return;
+  }
+
+  setTodos([...todos, input]);
+  setInput("");
+};
+
 
   const deleteTodo = (index) => {
     const newTodos = todos.filter((_, i) => i !== index);
